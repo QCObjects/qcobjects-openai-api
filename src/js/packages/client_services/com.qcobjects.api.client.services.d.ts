@@ -1,0 +1,20 @@
+import { Service } from "qcobjects";
+type StandardResponse = {
+    request: XMLHttpRequest;
+    service: Service;
+};
+export declare class OpenAIClientService extends Service {
+    name: string;
+    external: boolean;
+    cached: boolean;
+    method: string;
+    headers: {
+        "Content-Type": string;
+        Authorization: string;
+    };
+    data: {};
+    withCredentials: boolean;
+    constructor();
+    done({ service }: StandardResponse): void;
+}
+export {};
