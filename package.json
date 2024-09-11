@@ -12,8 +12,8 @@
             "require": "./public/js/index.cjs",
             "import": "./public/js/index.mjs"
         },
-        "./components": "./public/static/js/components.js",
-        "./services": "./public/static/js/services.js",
+        "./components": "./public/static/js/components.cjs",
+        "./services": "./public/static/js/services.cjs",
         "./package.json": "./package.json"
     },
     "scripts": {

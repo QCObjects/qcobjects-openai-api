@@ -97,3 +97,21 @@ declare module "static/js/services" {
     import { ProxyOpenAIService } from "static/js/packages/services/com.qcobjects.api.client.services.openai.proxy";
     export { ProxyOpenAIService };
 }
+declare module "static/js/packages/components/index" {
+    import "./config";
+    import { ChatBotComponent, sendMessage } from "static/js/packages/components/com.qcobjects.ui.components.openai";
+    const _default: {
+        chatbotComponent: ChatBotComponent;
+        ChatBotComponent: typeof ChatBotComponent;
+        sendMessage: typeof sendMessage;
+    };
+    export default _default;
+}
+declare module "static/js/packages/controllers/index" {
+    import "./config";
+    import { ChatbotController } from "static/js/packages/controllers/com.qcobjects.ui.controllers.openai";
+    const _default_1: {
+        ChatbotController: typeof ChatbotController;
+    };
+    export default _default_1;
+}
