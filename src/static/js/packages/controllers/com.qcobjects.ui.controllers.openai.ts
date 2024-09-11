@@ -11,6 +11,10 @@ export class ChatbotController extends Controller {
         this.userInput = component.shadowRoot?.subelements("#user-input").pop();
     }
 
+    closeChat() {
+        this.component.body.remove();
+    }
+
     sendMessage() {
         if (this.userInput.value.trim() !== "") {
             this.addMessage(this.userInput.value, "user");

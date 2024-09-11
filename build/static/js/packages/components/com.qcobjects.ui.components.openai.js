@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.chatbotComponent = void 0;
+exports.ChatBotComponent = exports.chatbotComponent = void 0;
 exports.sendMessage = sendMessage;
 const qcobjects_1 = require("qcobjects");
 const com_qcobjects_ui_controllers_openai_1 = require("../controllers/com.qcobjects.ui.controllers.openai");
-const chatbotComponent = new qcobjects_1.Component({
-    name: "chatbot",
-    tplsource: "inline",
-    shadowed: true,
-    template: `
+class ChatBotComponent extends qcobjects_1.Component {
+    constructor() {
+        super(...arguments);
+        this.tplsource = "inline";
+        this.shadowed = true;
+        this.template = `
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -94,9 +95,26 @@ const chatbotComponent = new qcobjects_1.Component({
             border: 1px solid #ddd;
         }
 
+        .chat-close-button 
+        {
+            color: white;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99999;
+            border-radius: 50%;
+            padding: 12px;
+        }
+        
+
     </style>
 
         <div class="chat-container">
+            <div class="chat-close-button" onclick="global.get('closeChatbot')()">⬇️</div>
             <div class="chat-header">QCObjects OpenAI Chatbot</div>
             <div class="chat-messages" id="chat-messages"></div>
             <div class="chat-input">
@@ -106,12 +124,21 @@ const chatbotComponent = new qcobjects_1.Component({
                 </button>
             </div>
         </div>
-    `
-});
+    `;
+    }
+}
+exports.ChatBotComponent = ChatBotComponent;
+const chatbotComponent = new ChatBotComponent({ name: "chatbot" });
 exports.chatbotComponent = chatbotComponent;
 function sendMessage() {
     chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: chatbotComponent });
     const chatbot = chatbotComponent.controller;
     chatbot.sendMessage();
 }
+function closeChatbot() {
+    chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: chatbotComponent });
+    const chatbot = chatbotComponent.controller;
+    chatbot.closeChat();
+}
 qcobjects_1.global.set("chatbotSendMessage", sendMessage);
+qcobjects_1.global.set("closeChatbot", closeChatbot);

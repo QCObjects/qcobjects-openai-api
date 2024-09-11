@@ -9,6 +9,9 @@ class ChatbotController extends qcobjects_1.Controller {
         this.chatMessages = component.shadowRoot?.subelements("#chat-messages").pop();
         this.userInput = component.shadowRoot?.subelements("#user-input").pop();
     }
+    closeChat() {
+        this.component.body.remove();
+    }
     sendMessage() {
         if (this.userInput.value.trim() !== "") {
             this.addMessage(this.userInput.value, "user");

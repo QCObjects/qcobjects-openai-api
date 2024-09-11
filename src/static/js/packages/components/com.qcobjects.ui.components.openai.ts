@@ -1,11 +1,11 @@
-import { Component, ControllerParams, global } from "qcobjects";
+import { Component, ControllerParams, global} from "qcobjects";
 import { ChatbotController } from "../controllers/com.qcobjects.ui.controllers.openai";
 
-const chatbotComponent = new Component({
-    name:"chatbot",
-    tplsource:"inline",
-    shadowed:true,
-    template: `
+class ChatBotComponent extends Component {
+   
+    tplsource = "inline";
+    shadowed = true;
+    template = `
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -91,9 +91,26 @@ const chatbotComponent = new Component({
             border: 1px solid #ddd;
         }
 
+        .chat-close-button 
+        {
+            color: white;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99999;
+            border-radius: 50%;
+            padding: 12px;
+        }
+        
+
     </style>
 
         <div class="chat-container">
+            <div class="chat-close-button" onclick="global.get('closeChatbot')()">⬇️</div>
             <div class="chat-header">QCObjects OpenAI Chatbot</div>
             <div class="chat-messages" id="chat-messages"></div>
             <div class="chat-input">
@@ -103,14 +120,24 @@ const chatbotComponent = new Component({
                 </button>
             </div>
         </div>
-    `
-});
+    `;
+}
+
+const chatbotComponent = new ChatBotComponent({name:"chatbot"});
+
 
 function sendMessage() {
     chatbotComponent.controller = new ChatbotController({component:chatbotComponent} as ControllerParams);
     const chatbot = chatbotComponent.controller as ChatbotController;
     chatbot.sendMessage();
 }
-global.set("chatbotSendMessage", sendMessage);
 
-export {chatbotComponent, sendMessage};
+function closeChatbot() {
+    chatbotComponent.controller = new ChatbotController({component:chatbotComponent} as ControllerParams);
+    const chatbot = chatbotComponent.controller as ChatbotController;
+    chatbot.closeChat();
+}
+global.set("chatbotSendMessage", sendMessage);
+global.set("closeChatbot", closeChatbot);
+
+export {chatbotComponent, ChatBotComponent, sendMessage};

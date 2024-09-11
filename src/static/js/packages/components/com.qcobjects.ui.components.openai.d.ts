@@ -1,4 +1,9 @@
 import { Component } from "qcobjects";
-declare const chatbotComponent: Component;
+declare class ChatBotComponent extends Component {
+    tplsource: string;
+    shadowed: boolean;
+    template: string;
+}
+declare const chatbotComponent: ChatBotComponent;
 declare function sendMessage(): void;
-export { chatbotComponent, sendMessage };
+export { chatbotComponent, ChatBotComponent, sendMessage };
