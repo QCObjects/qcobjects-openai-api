@@ -1,5 +1,5 @@
-import { BackendMicroservice, Microservice } from "qcobjects";
+import { BackendMicroservice } from "qcobjects";
 declare class OpenAIAPI extends BackendMicroservice {
-    constructor(microservice: Microservice);
+    post(formData?: object | string): void;
 }
 export default OpenAIAPI;

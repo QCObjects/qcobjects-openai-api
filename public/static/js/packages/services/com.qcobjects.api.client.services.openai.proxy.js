@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OpenAIClientService = void 0;
+exports.ProxyOpenAIService = void 0;
 const qcobjects_1 = require("qcobjects");
-class OpenAIClientService extends qcobjects_1.Service {
+class ProxyOpenAIService extends qcobjects_1.Service {
     constructor() {
         super();
-        this.name = "openai";
-        this.url = "https://api.openai.com/v1/chat/completions";
-        this.external = true;
+        this.name = "openaiproxy";
+        this.url = "/api/openai";
+        this.external = false;
         this.cached = false;
         this.method = "POST";
         this.headers = {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${qcobjects_1.CONFIG.get("OPENAI_API_KEY", "OPENAI_API_KEY")}`
+            "Content-Type": "application/json"
         };
         this.data = {};
         this.withCredentials = false;
@@ -28,4 +27,4 @@ class OpenAIClientService extends qcobjects_1.Service {
         service.template = result;
     }
 }
-exports.OpenAIClientService = OpenAIClientService;
+exports.ProxyOpenAIService = ProxyOpenAIService;

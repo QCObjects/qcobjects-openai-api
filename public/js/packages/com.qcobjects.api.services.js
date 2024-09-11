@@ -7,13 +7,21 @@ const qcobjects_1 = require("qcobjects");
 const com_qcobjects_api_client_services_1 = require("./client_services/com.qcobjects.api.client.services");
 const serviceLoaderNode_1 = __importDefault(require("./serviceLoaderNode"));
 class OpenAIAPI extends qcobjects_1.BackendMicroservice {
-    constructor(microservice) {
+    post(formData) {
         const clientService = new com_qcobjects_api_client_services_1.OpenAIClientService();
+        if (typeof formData !== "undefined") {
+            clientService.data = JSON.parse(formData);
+        }
         (0, serviceLoaderNode_1.default)(clientService)
             .then(({ service }) => {
-            microservice.body = service.template;
+            qcobjects_1.logger.debug(`Received from OpenAI: ${service.template}`);
+            this.body = service.template;
+        }).catch((error) => {
+            qcobjects_1.logger.debug(`An error ocurred: ${error}`);
+            this.body = error;
+        }).finally(() => {
+            this.done();
         });
-        super(microservice);
     }
 }
 exports.default = OpenAIAPI;

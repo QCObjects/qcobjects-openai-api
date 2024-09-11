@@ -6,10 +6,10 @@ const serviceLoaderNode = (service) => {
         const https = require("https");
         const url = new URL(service.url);
         const options = {
-            "method": "GET",
+            "method": service.method,
             "hostname": url.hostname,
             "path": url.pathname + url.search,
-            "headers": {},
+            "headers": service.headers,
             "maxRedirects": 20
         };
         const req = https.request(options, function (res) {
@@ -27,6 +27,7 @@ const serviceLoaderNode = (service) => {
                 reject(error);
             });
         });
+        req.write(JSON.stringify(service.data));
         req.end();
     });
 };

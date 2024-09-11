@@ -3,7 +3,7 @@ type StandardResponse = {
     request: XMLHttpRequest;
     service: Service;
 };
-export declare class OpenAIClientService extends Service {
+export declare class ProxyOpenAIService extends Service {
     name: string;
     url: string;
     external: boolean;
@@ -11,7 +11,6 @@ export declare class OpenAIClientService extends Service {
     method: string;
     headers: {
         "Content-Type": string;
-        Authorization: string;
     };
     data: {};
     withCredentials: boolean;

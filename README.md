@@ -1,9 +1,9 @@
-# QCObjects Handler Hello World
+# QCObjects OpenAI API
 
 # Install 
 
 ```shell
-npm i qcobjects-handler-hello-world
+npm i qcobjects-openai-api
 ```
 
 # Setup in your config.json
@@ -12,32 +12,42 @@ npm i qcobjects-handler-hello-world
 "backend":{
     "routes":[
         {
-            "name":"Hello World!",
-            "description":"Hello world Microservice!",
-            "path":"^/hello-world",
-            "microservice":"qcobjects-handler-hello-world",
-            "headers": {
-              "content-type": "text/html; charset=utf-8"
-            },
-            "responseHeaders":{
-            },
-            "cors":{
-              "allow_origins":"*"
-            }
+          "name":"QCObjects Open AI API Proxy",
+          "description":"This endpoint returns same response like if you were calling to OpenAI API",
+          "path": "^/api/openai$",
+          "microservice":"qcobjects-openai-api",
+          "headers": {
+            "content-type": "text/html; charset=utf-8"
+          },
+          "responseHeaders":{
+          },
+          "cors":{
+            "allow_origins":"*"
+          }
         }
     ]
 }
 ```
 
+# The way of using it 
+
+```javascript
+import {chatbotComponent} from "qcobjects-openai-api/components";
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    document.body.append(chatbotComponent.body);
+});
+```
+
 # Visit
 
-Visit https://localhost:port/hello-world
+Visit https://localhost:port/api/openai
 
 # Create your own microservice
 
 To make your own microservice, you can generate it with QCObjects CLI using this package as template:
 
 ```shell
-qcobjects create --custom=qcobjects-handler-hello-world myown-handler-microservice
+qcobjects create --custom=qcobjects-openai-api myown-handler-microservice
 ```
 

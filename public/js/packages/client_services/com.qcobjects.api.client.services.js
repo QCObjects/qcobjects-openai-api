@@ -6,6 +6,7 @@ class OpenAIClientService extends qcobjects_1.Service {
     constructor() {
         super();
         this.name = "openai";
+        this.url = "https://api.openai.com/v1/chat/completions";
         this.external = true;
         this.cached = false;
         this.method = "POST";
@@ -22,11 +23,9 @@ class OpenAIClientService extends qcobjects_1.Service {
         };
     }
     done({ service }) {
-        qcobjects_1.logger.debug(service.template);
-        const result = service.template;
-        service.template = JSON.stringify({
-            result
-        });
+        qcobjects_1.logger.debug(`Received from service call: ${service.template}`);
+        const result = JSON.parse(service.template);
+        service.template = result;
     }
 }
 exports.OpenAIClientService = OpenAIClientService;

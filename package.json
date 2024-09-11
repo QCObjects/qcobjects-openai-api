@@ -12,10 +12,11 @@
             "require": "./public/js/index.cjs",
             "import": "./public/js/index.mjs"
         },
-        "./proxy": "./public/js/index.cjs",
+        "./components": "./public/static/js/components.js",
+        "./services": "./public/static/js/services.js",
         "./package.json": "./package.json"
     },
-"scripts": {
+    "scripts": {
         "test": "npm run lint",
         "lint": "(npx eslint \"src/**/*.ts\" --fix --ext ts)",
         "sync": "git add . && git commit -am ",
@@ -35,7 +36,8 @@
         "prestart": "npm run publish:web",
         "cli:help": "qcobjects --help",
         "tree": "tree -d --gitignore"
-    },    "repository": {},
+    },
+    "repository": {},
     "keywords": [
         "qcobjects-handler",
         "qcobjects-api",
@@ -71,7 +73,7 @@
         "qcobjects-sdk": "^2.4.64",
         "qcobjects-tsconfig": "^2.4.10",
         "semistandard": "^16.0.1",
-        "typescript": "^5.0.4"
+        "typescript": "^5.6.2"
     },
     "peerDependencies": {
         "qcobjects": "^2.4.95",

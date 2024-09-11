@@ -7,6 +7,7 @@ type StandardResponse = {
 
 export class OpenAIClientService extends Service {
     name = "openai";
+    url = "https://api.openai.com/v1/chat/completions";
     external = true;
     cached = false;
     method = "POST";
@@ -30,13 +31,10 @@ export class OpenAIClientService extends Service {
     }
 
     done({ service }: StandardResponse) {
-        logger.debug(service.template);
-    
-      const result:string = service.template;
-
-      service.template = JSON.stringify({
-        result
-      });
+      logger.debug(`Received from service call: ${service.template}`);
+      const result:string = JSON.parse(service.template);
+      service.template = result;
     }
 
 }
+

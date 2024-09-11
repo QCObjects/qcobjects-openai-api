@@ -13,7 +13,7 @@ backend.routes.push({
   name:"QCObjects Open AI API Proxy",
   description:"This endpoint returns same response like if you were calling to OpenAI API",
   path: "^/api/openai$",
-  microservice:"qcobjects-openai-api/proxy",
+  microservice:"qcobjects-openai-api",
   headers: {
     "content-type": "text/html; charset=utf-8"
   },
@@ -23,3 +23,4 @@ backend.routes.push({
     "allow_origins":"*"
   }
 } as Route);
+CONFIG.set("backend", backend);

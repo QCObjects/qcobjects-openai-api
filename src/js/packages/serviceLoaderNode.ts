@@ -7,11 +7,10 @@ const serviceLoaderNode = (service:Service):Promise<{request:any,service:Service
         const url = new URL(service.url);
         
         const options = {
-          "method": "GET",
+          "method": service.method,
           "hostname": url.hostname,
           "path": url.pathname + url.search,
-          "headers": {
-          },
+          "headers": service.headers,
           "maxRedirects": 20
         };
         
@@ -34,6 +33,7 @@ const serviceLoaderNode = (service:Service):Promise<{request:any,service:Service
           });
         });
         
+        req.write(JSON.stringify(service.data));
         req.end();
     
     });
