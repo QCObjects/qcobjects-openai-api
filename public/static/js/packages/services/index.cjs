@@ -27,5 +27,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Everyone is permitted to copy and distribute verbatim copies of this
  * license document, but changing it is not allowed.
 */
-const components_1 = __importDefault(require("./components"));
-exports.default = components_1.default;
+const index_1 = __importDefault(require("./index"));
+exports.default = index_1.default;

@@ -24,5 +24,5 @@
  * license document, but changing it is not allowed.
 */
 
-import components from "./components";
-export default components;
+import api from "./index";
+export default api;

@@ -4,7 +4,7 @@ type StandardResponse = {
     request: XMLHttpRequest;
     service: Service;
 };
-export class ProxyOpenAIService extends Service {
+export default class ProxyOpenAIService extends Service {
     name = "openaiproxy";
     url = "/api/openai";
     external = false;

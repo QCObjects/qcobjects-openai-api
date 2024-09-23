@@ -68,7 +68,8 @@ declare module "static/js/packages/components/com.qcobjects.ui.components.openai
     function sendMessage(): void;
     export { chatbotComponent, ChatBotComponent, sendMessage };
 }
-declare module "static/js/components" {
+declare module "static/js/packages/components/index" {
+    import "./config";
     import { ChatBotComponent, sendMessage } from "static/js/packages/components/com.qcobjects.ui.components.openai";
     const _default: {
         chatbotComponent: ChatBotComponent;
@@ -77,13 +78,21 @@ declare module "static/js/components" {
     };
     export default _default;
 }
+declare module "static/js/packages/controllers/index" {
+    import "./config";
+    import { ChatbotController } from "static/js/packages/controllers/com.qcobjects.ui.controllers.openai";
+    const _default_1: {
+        ChatbotController: typeof ChatbotController;
+    };
+    export default _default_1;
+}
 declare module "static/js/packages/services/com.qcobjects.api.client.services.openai.proxy" {
     import { Service } from "qcobjects";
     type StandardResponse = {
         request: XMLHttpRequest;
         service: Service;
     };
-    export class ProxyOpenAIService extends Service {
+    export default class ProxyOpenAIService extends Service {
         name: string;
         url: string;
         external: boolean;
@@ -98,25 +107,8 @@ declare module "static/js/packages/services/com.qcobjects.api.client.services.op
         done({ service }: StandardResponse): void;
     }
 }
-declare module "static/js/services" {
-    import { ProxyOpenAIService } from "static/js/packages/services/com.qcobjects.api.client.services.openai.proxy";
-    export { ProxyOpenAIService };
-}
-declare module "static/js/packages/components/index" {
+declare module "static/js/packages/services/index" {
     import "./config";
-    import { ChatBotComponent, sendMessage } from "static/js/packages/components/com.qcobjects.ui.components.openai";
-    const _default_1: {
-        chatbotComponent: ChatBotComponent;
-        ChatBotComponent: typeof ChatBotComponent;
-        sendMessage: typeof sendMessage;
-    };
-    export default _default_1;
-}
-declare module "static/js/packages/controllers/index" {
-    import "./config";
-    import { ChatbotController } from "static/js/packages/controllers/com.qcobjects.ui.controllers.openai";
-    const _default_2: {
-        ChatbotController: typeof ChatbotController;
-    };
-    export default _default_2;
+    import ChatbotServices from "static/js/packages/services/com.qcobjects.api.client.services.openai.proxy";
+    export default ChatbotServices;
 }

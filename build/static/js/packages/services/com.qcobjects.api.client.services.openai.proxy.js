@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProxyOpenAIService = void 0;
 const qcobjects_1 = require("qcobjects");
 class ProxyOpenAIService extends qcobjects_1.Service {
     constructor() {
@@ -27,4 +26,4 @@ class ProxyOpenAIService extends qcobjects_1.Service {
         service.template = result;
     }
 }
-exports.ProxyOpenAIService = ProxyOpenAIService;
+exports.default = ProxyOpenAIService;
