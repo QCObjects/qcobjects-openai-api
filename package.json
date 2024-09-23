@@ -12,7 +12,10 @@
             "require": "./public/js/index.cjs",
             "import": "./public/js/index.mjs"
         },
-        "./components": "./public/static/js/packages/components/index.cjs",
+        "./components": {
+            "default":"./public/static/js/packages/components/index.cjs",
+            "types":"./src/types.d.ts"
+        },
         "./static/js/packages/components": "./public/static/js/packages/components/index.cjs",
         "./controllers": "./public/static/js/packages/controllers/index.cjs",
         "./services": "./public/static/js/packages/services/index.cjs",
