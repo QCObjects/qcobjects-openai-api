@@ -6,7 +6,7 @@
     "main": "public/js/index.cjs",
     "module": "public/js/index.mjs",
     "type": "commonjs",
-    "types": "src/types.d.ts",
+    "types": "src/**/*.d.ts",
     "exports": {
         ".": {
             "require": "./public/js/index.cjs",
@@ -14,9 +14,8 @@
         },
         "./components": {
             "default": "./public/static/js/packages/components/index.cjs",
-            "types": "./src/types.d.ts"
+            "types": "./types/index.d.ts"
         },
-        "./static/js/packages/components": "./public/static/js/packages/components/index.cjs",
         "./controllers": "./public/static/js/packages/controllers/index.cjs",
         "./services": "./public/static/js/packages/services/index.cjs",
         "./package.json": "./package.json"
