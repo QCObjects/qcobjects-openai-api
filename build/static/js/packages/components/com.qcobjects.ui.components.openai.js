@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChatBotComponent = exports.chatbotComponent = void 0;
+exports.chatbotComponent = exports.ChatBotComponent = void 0;
 exports.sendMessage = sendMessage;
+exports.closeChatbot = closeChatbot;
 const qcobjects_1 = require("qcobjects");
 const com_qcobjects_ui_controllers_openai_1 = require("../controllers/com.qcobjects.ui.controllers.openai");
 class ChatBotComponent extends qcobjects_1.Component {
@@ -128,16 +129,15 @@ class ChatBotComponent extends qcobjects_1.Component {
     }
 }
 exports.ChatBotComponent = ChatBotComponent;
-const chatbotComponent = new ChatBotComponent({ name: "chatbot" });
-exports.chatbotComponent = chatbotComponent;
+exports.chatbotComponent = new ChatBotComponent({ name: "chatbot" });
 function sendMessage() {
-    chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: chatbotComponent });
-    const chatbot = chatbotComponent.controller;
+    exports.chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: exports.chatbotComponent });
+    const chatbot = exports.chatbotComponent.controller;
     chatbot.sendMessage();
 }
 function closeChatbot() {
-    chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: chatbotComponent });
-    const chatbot = chatbotComponent.controller;
+    exports.chatbotComponent.controller = new com_qcobjects_ui_controllers_openai_1.ChatbotController({ component: exports.chatbotComponent });
+    const chatbot = exports.chatbotComponent.controller;
     chatbot.closeChat();
 }
 qcobjects_1.global.set("chatbotSendMessage", sendMessage);

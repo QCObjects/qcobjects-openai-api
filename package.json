@@ -13,6 +13,7 @@
             "import": "./public/js/index.mjs"
         },
         "./components": "./public/static/js/packages/components/index.cjs",
+        "./static/js/packages/components":"./public/static/js/packages/components/index.cjs",
         "./controllers": "./public/static/js/packages/controllers/index.cjs",
         "./services": "./public/static/js/packages/services/index.cjs",
         "./package.json": "./package.json"

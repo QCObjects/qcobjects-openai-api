@@ -59,14 +59,14 @@ declare module "static/js/packages/controllers/com.qcobjects.ui.controllers.open
 }
 declare module "static/js/packages/components/com.qcobjects.ui.components.openai" {
     import { Component } from "qcobjects";
-    class ChatBotComponent extends Component {
+    export class ChatBotComponent extends Component {
         tplsource: string;
         shadowed: boolean;
         template: string;
     }
-    const chatbotComponent: ChatBotComponent;
-    function sendMessage(): void;
-    export { chatbotComponent, ChatBotComponent, sendMessage };
+    export const chatbotComponent: ChatBotComponent;
+    export function sendMessage(): void;
+    export function closeChatbot(): void;
 }
 declare module "static/js/packages/components/index" {
     import { ChatBotComponent, sendMessage } from "static/js/packages/components/com.qcobjects.ui.components.openai";

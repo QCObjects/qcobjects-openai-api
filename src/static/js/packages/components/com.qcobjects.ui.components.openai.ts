@@ -1,7 +1,7 @@
 import { Component, ControllerParams, global} from "qcobjects";
 import { ChatbotController } from "../controllers/com.qcobjects.ui.controllers.openai";
 
-class ChatBotComponent extends Component {
+export class ChatBotComponent extends Component {
    
     tplsource = "inline";
     shadowed = true;
@@ -123,16 +123,16 @@ class ChatBotComponent extends Component {
     `;
 }
 
-const chatbotComponent = new ChatBotComponent({name:"chatbot"});
+export const chatbotComponent = new ChatBotComponent({name:"chatbot"});
 
 
-function sendMessage() {
+export function sendMessage() {
     chatbotComponent.controller = new ChatbotController({component:chatbotComponent} as ControllerParams);
     const chatbot = chatbotComponent.controller as ChatbotController;
     chatbot.sendMessage();
 }
 
-function closeChatbot() {
+export function closeChatbot() {
     chatbotComponent.controller = new ChatbotController({component:chatbotComponent} as ControllerParams);
     const chatbot = chatbotComponent.controller as ChatbotController;
     chatbot.closeChat();
@@ -140,4 +140,3 @@ function closeChatbot() {
 global.set("chatbotSendMessage", sendMessage);
 global.set("closeChatbot", closeChatbot);
 
-export {chatbotComponent, ChatBotComponent, sendMessage};
