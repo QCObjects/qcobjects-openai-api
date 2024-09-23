@@ -69,7 +69,6 @@ declare module "static/js/packages/components/com.qcobjects.ui.components.openai
     export { chatbotComponent, ChatBotComponent, sendMessage };
 }
 declare module "static/js/packages/components/index" {
-    import "./config";
     import { ChatBotComponent, sendMessage } from "static/js/packages/components/com.qcobjects.ui.components.openai";
     const _default: {
         chatbotComponent: ChatBotComponent;
@@ -79,7 +78,6 @@ declare module "static/js/packages/components/index" {
     export default _default;
 }
 declare module "static/js/packages/controllers/index" {
-    import "./config";
     import { ChatbotController } from "static/js/packages/controllers/com.qcobjects.ui.controllers.openai";
     const _default_1: {
         ChatbotController: typeof ChatbotController;
@@ -108,7 +106,6 @@ declare module "static/js/packages/services/com.qcobjects.api.client.services.op
     }
 }
 declare module "static/js/packages/services/index" {
-    import "./config";
     import ChatbotServices from "static/js/packages/services/com.qcobjects.api.client.services.openai.proxy";
     export default ChatbotServices;
 }
