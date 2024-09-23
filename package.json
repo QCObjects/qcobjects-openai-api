@@ -1,7 +1,7 @@
 {
     "name": "qcobjects-openai-api",
     "private": false,
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "QCObjects OpenAI API Handler",
     "main": "public/js/index.cjs",
     "module": "public/js/index.mjs",
@@ -13,8 +13,8 @@
             "import": "./public/js/index.mjs"
         },
         "./components": {
-            "default":"./public/static/js/packages/components/index.cjs",
-            "types":"./src/types.d.ts"
+            "default": "./public/static/js/packages/components/index.cjs",
+            "types": "./src/types.d.ts"
         },
         "./static/js/packages/components": "./public/static/js/packages/components/index.cjs",
         "./controllers": "./public/static/js/packages/controllers/index.cjs",
